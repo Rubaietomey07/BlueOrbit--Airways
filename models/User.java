@@ -1,3 +1,4 @@
+//user.java file
 package com.example.airlinemanagementsystem.models;
 
 public class User {
