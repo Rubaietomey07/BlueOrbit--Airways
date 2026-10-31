@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.airlinemanagementsystem.controllers.SearchFlightController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f0f4f8;">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #1a73e8; -fx-padding: 16 24 16 24;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Search Flights"
+                       style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85);"/>
+            </VBox>
+            <Button text="← Back" onAction="#goBack"
+                    style="-fx-background-color: rgba(255,255,255,0.15);
+                           -fx-text-fill: white;
+                           -fx-border-color: rgba(255,255,255,0.4);
+                           -fx-border-radius: 6;
+                           -fx-background-radius: 6;
+                           -fx-font-size: 13px;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <!-- Search Form -->
+            <VBox spacing="14"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-border-color: #e0e0e0;
+                         -fx-border-radius: 12;
+                         -fx-padding: 24;">
+
+                <Label text="Find Available Flights"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <HBox spacing="16" alignment="CENTER_LEFT">
+
+                    <VBox spacing="4">
+                        <Label text="From" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                        <ComboBox fx:id="sourceCombo"
+                                  promptText="Select source"
+                                  prefWidth="200"/>
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="To" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                        <ComboBox fx:id="destinationCombo"
+                                  promptText="Select destination"
+                                  prefWidth="200"/>
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text="Date" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                        <DatePicker fx:id="datePicker"
+                                    promptText="Select date"
+                                    prefWidth="180"/>
+                    </VBox>
+
+                    <VBox spacing="4">
+                        <Label text=" " style="-fx-font-size: 13px;"/>
+                        <Button text="Search Flights" onAction="#handleSearch"
+                                prefHeight="32"
+                                style="-fx-background-color: #1a73e8;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 6;
+                                       -fx-font-size: 13px;
+                                       -fx-cursor: hand;"/>
+                    </VBox>
+
+                </HBox>
+
+                <Label fx:id="errorLabel" text=""
+                       style="-fx-text-fill: red; -fx-font-size: 12px;"/>
+
+            </VBox>
+
+            <!-- Results Table -->
+            <VBox spacing="8"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-border-color: #e0e0e0;
+                         -fx-border-radius: 12;
+                         -fx-padding: 24;">
+
+                <Label text="Available Flights"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="flightsTable"
+                           prefHeight="280"
+                           style="-fx-background-radius: 8;">
+
+                    <columns>
+                        <TableColumn fx:id="colFlightNumber" text="Flight No."  prefWidth="100"/>
+                        <TableColumn fx:id="colSource"       text="From"        prefWidth="120"/>
+                        <TableColumn fx:id="colDestination"  text="To"          prefWidth="120"/>
+                        <TableColumn fx:id="colDate"         text="Date"        prefWidth="120"/>
+                        <TableColumn fx:id="colEconomy"      text="Economy"     prefWidth="100"/>
+                        <TableColumn fx:id="colBusiness"     text="Business"    prefWidth="100"/>
+                        <TableColumn fx:id="colFirst"        text="First Class" prefWidth="110"/>
+                    </columns>
+
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <Button text="Select This Flight →" onAction="#handleSelectFlight"
+                            style="-fx-background-color: #1a73e8;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 6;
+                                   -fx-font-size: 13px;
+                                   -fx-cursor: hand;
+                                   -fx-padding: 8 16 8 16;"/>
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

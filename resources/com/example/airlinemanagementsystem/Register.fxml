@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.airlinemanagementsystem.controllers.RegisterController"
+           style="-fx-background-color: #1a8fd1;"
+           prefWidth="900" prefHeight="600">
+
+    <!-- Background decorative circles -->
+    <Circle radius="300" fill="#1580be" translateX="350" translateY="-100"/>
+    <Circle radius="200" fill="#1272aa" translateX="400" translateY="50"/>
+    <Ellipse radiusX="120" radiusY="60" fill="#0d5f8f"
+             translateX="-380" translateY="220"/>
+
+    <!-- Main Card -->
+    <HBox style="-fx-background-color: white;
+                 -fx-background-radius: 20;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 8);"
+          prefWidth="780" prefHeight="520"
+          maxWidth="780" maxHeight="520">
+
+        <!-- LEFT: Register Form -->
+        <VBox spacing="14" alignment="TOP_LEFT"
+              style="-fx-padding: 40 50 40 50;
+                     -fx-background-color: white;
+                     -fx-background-radius: 20 0 0 20;"
+              prefWidth="380">
+
+            <!-- Logo -->
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="✈"
+                       style="-fx-font-size: 24px; -fx-text-fill: #1a8fd1;"/>
+                <VBox spacing="0">
+                    <Label text="BLUEORBIT"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold;
+                                  -fx-text-fill: #1a8fd1;"/>
+                    <Label text="AIRWAYS"
+                           style="-fx-font-size: 9px; -fx-text-fill: #888;"/>
+                </VBox>
+            </HBox>
+
+            <Label text="Create Account"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold;
+                          -fx-text-fill: #222;"/>
+
+            <Label text="Join BlueOrbit Airways today"
+                   style="-fx-font-size: 13px; -fx-text-fill: #888;"/>
+
+            <!-- Full Name -->
+            <TextField fx:id="nameField"
+                       promptText="Full Name"
+                       prefWidth="280" prefHeight="42"
+                       style="-fx-background-color: #f5f5f5;
+                              -fx-border-color: #e0e0e0;
+                              -fx-border-radius: 8;
+                              -fx-background-radius: 8;
+                              -fx-font-size: 13px;
+                              -fx-padding: 0 12 0 12;"/>
+
+            <!-- Username -->
+            <TextField fx:id="usernameField"
+                       promptText="Username"
+                       prefWidth="280" prefHeight="42"
+                       style="-fx-background-color: #f5f5f5;
+                              -fx-border-color: #e0e0e0;
+                              -fx-border-radius: 8;
+                              -fx-background-radius: 8;
+                              -fx-font-size: 13px;
+                              -fx-padding: 0 12 0 12;"/>
+
+            <!-- Password -->
+            <PasswordField fx:id="passwordField"
+                           promptText="Password (min. 6 characters)"
+                           prefWidth="280" prefHeight="42"
+                           style="-fx-background-color: #f5f5f5;
+                                  -fx-border-color: #e0e0e0;
+                                  -fx-border-radius: 8;
+                                  -fx-background-radius: 8;
+                                  -fx-font-size: 13px;
+                                  -fx-padding: 0 12 0 12;"/>
+
+            <!-- Error -->
+            <Label fx:id="errorLabel" text=""
+                   style="-fx-text-fill: #e74c3c; -fx-font-size: 12px;"
+                   wrapText="true" maxWidth="280"/>
+
+            <!-- Register Button -->
+            <Button text="CREATE ACCOUNT" onAction="#handleRegister"
+                    prefWidth="280" prefHeight="42"
+                    style="-fx-background-color: #1a8fd1;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 8;
+                           -fx-font-size: 14px;
+                           -fx-font-weight: bold;
+                           -fx-cursor: hand;"/>
+
+            <!-- Login link -->
+            <HBox spacing="4" alignment="CENTER_LEFT">
+                <Label text="Already have an account?"
+                       style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+                <Hyperlink text="Login here"
+                           onAction="#goToLogin"
+                           style="-fx-font-size: 12px; -fx-text-fill: #1a8fd1;
+                                  -fx-border-color: transparent;"/>
+            </HBox>
+
+        </VBox>
+
+        <!-- RIGHT: Visual Panel -->
+        <StackPane HBox.hgrow="ALWAYS"
+                   style="-fx-background-color: #1a8fd1;
+                          -fx-background-radius: 0 20 20 0;">
+
+            <!-- Decorative circles -->
+            <Circle radius="180" fill="#1580be"
+                    translateX="60" translateY="-40"/>
+            <Circle radius="130" fill="#1272aa"
+                    translateX="80" translateY="20"/>
+
+            <!-- Text content -->
+            <VBox spacing="16" alignment="CENTER"
+                  style="-fx-padding: 40;">
+
+                <Label text="✈"
+                       style="-fx-font-size: 48px; -fx-text-fill: white;"/>
+
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold;
+                              -fx-text-fill: white;" wrapText="true"/>
+
+                <Label text="Your journey begins here."
+                       style="-fx-font-size: 14px;
+                              -fx-text-fill: rgba(255,255,255,0.9);"
+                       wrapText="true"/>
+                <Label text="Register and take off today!"
+                       style="-fx-font-size: 14px;
+                              -fx-text-fill: rgba(255,255,255,0.9);"
+                       wrapText="true"/>
+
+                <!-- Dot indicators -->
+                <HBox spacing="8" alignment="CENTER"
+                      style="-fx-padding: 16 0 0 0;">
+                    <Circle radius="5" fill="rgba(255,255,255,0.4)"/>
+                    <Circle radius="5" fill="white"/>
+                    <Circle radius="5" fill="rgba(255,255,255,0.4)"/>
+                </HBox>
+
+                <!-- Benefits -->
+                <VBox spacing="8" style="-fx-padding: 16 0 0 0;">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="Free passenger registration"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="View and manage bookings"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="Use coupon codes for discounts"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="Cancel anytime"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+        </StackPane>
+
+    </HBox>
+
+</StackPane>

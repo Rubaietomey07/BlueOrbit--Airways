@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.airlinemanagementsystem.controllers.EmployeeManagementController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f0f4f8;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #922b21; -fx-padding: 16 24 16 24;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Employee Management"
+                       style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85);"/>
+            </VBox>
+            <Button text="← Back" onAction="#goBack"
+                    style="-fx-background-color: rgba(255,255,255,0.15);
+                           -fx-text-fill: white;
+                           -fx-border-color: rgba(255,255,255,0.4);
+                           -fx-border-radius: 6;
+                           -fx-background-radius: 6;
+                           -fx-font-size: 13px;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="20" style="-fx-padding: 30;">
+
+                <!-- Add / Update Employee Form -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="Add / Update Employee"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <HBox spacing="12">
+                        <VBox spacing="4">
+                            <Label text="Full Name" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="nameField" promptText="Full name" prefWidth="160"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Username" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="usernameField" promptText="Username" prefWidth="130"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Password" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="passwordField" promptText="Password" prefWidth="130"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="12">
+                        <VBox spacing="4">
+                            <Label text="Role" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <ComboBox fx:id="roleCombo" prefWidth="150" promptText="Select role"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Department" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="departmentField" promptText="Department" prefWidth="150"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Status" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <ComboBox fx:id="statusCombo" prefWidth="130" promptText="Status"/>
+                        </VBox>
+                    </HBox>
+
+                    <Label fx:id="formMessageLabel" text=""
+                           style="-fx-font-size: 13px;" wrapText="true"/>
+
+                    <HBox spacing="12">
+                        <Button text="Add Employee" onAction="#handleAdd"
+                                style="-fx-background-color: #1a73e8; -fx-text-fill: white;
+                                       -fx-background-radius: 6; -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                        <Button text="Update Selected" onAction="#handleUpdate"
+                                style="-fx-background-color: #f39c12; -fx-text-fill: white;
+                                       -fx-background-radius: 6; -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                        <Button text="Delete Selected" onAction="#handleDelete"
+                                style="-fx-background-color: #e74c3c; -fx-text-fill: white;
+                                       -fx-background-radius: 6; -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                        <Button text="Clear" onAction="#handleClear"
+                                style="-fx-background-color: #95a5a6; -fx-text-fill: white;
+                                       -fx-background-radius: 6; -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                    </HBox>
+
+                </VBox>
+
+                <!-- Employees Table -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="All Employees"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <TableView fx:id="employeesTable" prefHeight="280">
+                        <columns>
+                            <TableColumn fx:id="colEmpId"    text="Emp ID"     prefWidth="70"/>
+                            <TableColumn fx:id="colName"     text="Name"       prefWidth="150"/>
+                            <TableColumn fx:id="colUsername" text="Username"   prefWidth="120"/>
+                            <TableColumn fx:id="colRole"     text="Role"       prefWidth="80"/>
+                            <TableColumn fx:id="colDept"     text="Department" prefWidth="120"/>
+                            <TableColumn fx:id="colStatus"   text="Status"     prefWidth="80"/>
+                        </columns>
+                    </TableView>
+
+                    <Label fx:id="tableMessageLabel" text=""
+                           style="-fx-font-size: 13px; -fx-text-fill: #888;"/>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

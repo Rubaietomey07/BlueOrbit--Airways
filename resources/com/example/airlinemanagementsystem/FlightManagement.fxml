@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.airlinemanagementsystem.controllers.FlightManagementController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f0f4f8;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #922b21; -fx-padding: 16 24 16 24;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;
+                              -fx-text-fill: white;"/>
+                <Label text="Flight Management"
+                       style="-fx-font-size: 13px;
+                              -fx-text-fill: rgba(255,255,255,0.85);"/>
+            </VBox>
+            <Button text="← Back" onAction="#goBack"
+                    style="-fx-background-color: rgba(255,255,255,0.15);
+                           -fx-text-fill: white;
+                           -fx-border-color: rgba(255,255,255,0.4);
+                           -fx-border-radius: 6;
+                           -fx-background-radius: 6;
+                           -fx-font-size: 13px;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent;
+                           -fx-background: transparent;">
+            <VBox spacing="20" style="-fx-padding: 30;">
+
+                <!-- Add / Update Flight Form -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="Add / Update Flight"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold;
+                                  -fx-text-fill: #333;"/>
+
+                    <HBox spacing="12">
+                        <VBox spacing="4">
+                            <Label text="Flight Number"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="flightNumberField"
+                                       promptText="e.g. BS999" prefWidth="120"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Source"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="sourceField"
+                                       promptText="Source" prefWidth="130"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Destination"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="destinationField"
+                                       promptText="Destination" prefWidth="130"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Date"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <DatePicker fx:id="datePicker" prefWidth="150"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="12">
+                        <VBox spacing="4">
+                            <Label text="Economy Price (0 = no class)"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="economyField"
+                                       promptText="0" prefWidth="140"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="Business Price (0 = no class)"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="businessField"
+                                       promptText="0" prefWidth="140"/>
+                        </VBox>
+                        <VBox spacing="4">
+                            <Label text="First Class Price (0 = no class)"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <TextField fx:id="firstField"
+                                       promptText="0" prefWidth="140"/>
+                        </VBox>
+                    </HBox>
+
+                    <Label fx:id="formMessageLabel" text=""
+                           style="-fx-font-size: 13px;" wrapText="true"/>
+
+                    <HBox spacing="12">
+                        <Button text="Add Flight" onAction="#handleAdd"
+                                style="-fx-background-color: #1a73e8;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 6;
+                                       -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                        <Button text="Update Selected" onAction="#handleUpdate"
+                                style="-fx-background-color: #f39c12;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 6;
+                                       -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                        <Button text="Delete Selected" onAction="#handleDelete"
+                                style="-fx-background-color: #e74c3c;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 6;
+                                       -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                        <Button text="Clear" onAction="#handleClear"
+                                style="-fx-background-color: #95a5a6;
+                                       -fx-text-fill: white;
+                                       -fx-background-radius: 6;
+                                       -fx-cursor: hand;
+                                       -fx-padding: 8 16 8 16;"/>
+                    </HBox>
+
+                </VBox>
+
+                <!-- Flights Table -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="All Flights"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold;
+                                  -fx-text-fill: #333;"/>
+
+                    <TableView fx:id="flightsTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="colId"       text="ID"        prefWidth="50"/>
+                            <TableColumn fx:id="colNumber"   text="Flight No." prefWidth="90"/>
+                            <TableColumn fx:id="colSource"   text="From"       prefWidth="110"/>
+                            <TableColumn fx:id="colDest"     text="To"         prefWidth="110"/>
+                            <TableColumn fx:id="colDate"     text="Date"       prefWidth="100"/>
+                            <TableColumn fx:id="colEconomy"  text="Economy"    prefWidth="80"/>
+                            <TableColumn fx:id="colBusiness" text="Business"   prefWidth="80"/>
+                            <TableColumn fx:id="colFirst"    text="First"      prefWidth="80"/>
+                        </columns>
+                    </TableView>
+
+                    <Label fx:id="tableMessageLabel" text=""
+                           style="-fx-font-size: 13px; -fx-text-fill: #888;"/>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.airlinemanagementsystem.controllers.SelectSeatController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f0f4f8;">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #1a73e8; -fx-padding: 16 24 16 24;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Select Your Seat"
+                       style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85);"/>
+            </VBox>
+            <Button text="← Back" onAction="#goBack"
+                    style="-fx-background-color: rgba(255,255,255,0.15);
+                           -fx-text-fill: white;
+                           -fx-border-color: rgba(255,255,255,0.4);
+                           -fx-border-radius: 6;
+                           -fx-background-radius: 6;
+                           -fx-font-size: 13px;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <!-- Flight Info Card -->
+            <HBox spacing="40"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-border-color: #e0e0e0;
+                         -fx-border-radius: 12;
+                         -fx-padding: 20;">
+
+                <VBox spacing="4">
+                    <Label text="Flight"
+                           style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+                    <Label fx:id="flightNumberLabel" text="-"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <VBox spacing="4">
+                    <Label text="Route"
+                           style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+                    <Label fx:id="routeLabel" text="-"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <VBox spacing="4">
+                    <Label text="Date"
+                           style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+                    <Label fx:id="dateLabel" text="-"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- Seat Selection -->
+            <VBox spacing="14"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 12;
+                         -fx-border-color: #e0e0e0;
+                         -fx-border-radius: 12;
+                         -fx-padding: 24;">
+
+                <Label text="Choose Seat Class"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+
+                <!-- Class Selection -->
+                <HBox spacing="16">
+                    <VBox spacing="4" alignment="CENTER"
+                          style="-fx-background-color: #f8f9fa;
+                                 -fx-background-radius: 8;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-radius: 8;
+                                 -fx-padding: 16;"
+                          prefWidth="150">
+                        <Label text="Economy"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <Label fx:id="economyPriceLabel" text="BDT -"
+                               style="-fx-font-size: 13px; -fx-text-fill: #1a73e8;"/>
+                        <RadioButton fx:id="economyRadio" text="Select"
+                                     onAction="#handleClassSelection"/>
+                    </VBox>
+
+                    <VBox spacing="4" alignment="CENTER"
+                          style="-fx-background-color: #f8f9fa;
+                                 -fx-background-radius: 8;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-radius: 8;
+                                 -fx-padding: 16;"
+                          prefWidth="150">
+                        <Label text="Business"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <Label fx:id="businessPriceLabel" text="BDT -"
+                               style="-fx-font-size: 13px; -fx-text-fill: #1a73e8;"/>
+                        <RadioButton fx:id="businessRadio" text="Select"
+                                     onAction="#handleClassSelection"/>
+                    </VBox>
+
+                    <VBox spacing="4" alignment="CENTER"
+                          style="-fx-background-color: #f8f9fa;
+                                 -fx-background-radius: 8;
+                                 -fx-border-color: #e0e0e0;
+                                 -fx-border-radius: 8;
+                                 -fx-padding: 16;"
+                          prefWidth="150">
+                        <Label text="First Class"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <Label fx:id="firstPriceLabel" text="BDT -"
+                               style="-fx-font-size: 13px; -fx-text-fill: #1a73e8;"/>
+                        <RadioButton fx:id="firstRadio" text="Select"
+                                     onAction="#handleClassSelection"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Seat Picker -->
+                <VBox spacing="8">
+                    <Label text="Choose Seat Number"
+                           style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                    <ComboBox fx:id="seatCombo"
+                              promptText="Select class first"
+                              prefWidth="200"/>
+                </VBox>
+
+                <Label fx:id="errorLabel" text=""
+                       style="-fx-text-fill: red; -fx-font-size: 12px;"/>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <Button text="Continue to Price Details →"
+                            onAction="#handleContinue"
+                            style="-fx-background-color: #1a73e8;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 6;
+                                   -fx-font-size: 13px;
+                                   -fx-cursor: hand;
+                                   -fx-padding: 8 16 8 16;"/>
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

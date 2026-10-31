@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.airlinemanagementsystem.controllers.TicketGeneratedController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f0f4f8;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #1a73e8; -fx-padding: 16 24 16 24;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Booking Confirmed!"
+                       style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85);"/>
+            </VBox>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent;
+                           -fx-background: transparent;">
+            <VBox spacing="20" style="-fx-padding: 30;">
+
+                <!-- Success Banner -->
+                <VBox alignment="CENTER" spacing="8"
+                      style="-fx-background-color: #27ae60;
+                             -fx-background-radius: 12;
+                             -fx-padding: 24;">
+                    <Label text="✓ Payment Successful!"
+                           style="-fx-font-size: 20px; -fx-font-weight: bold;
+                                  -fx-text-fill: white;"/>
+                    <Label text="Your ticket has been booked successfully."
+                           style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);"/>
+                </VBox>
+
+                <!-- Ticket Card -->
+                <VBox spacing="14"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="BOARDING PASS"
+                               style="-fx-font-size: 18px; -fx-font-weight: bold;
+                                      -fx-text-fill: #1a73e8;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <!-- Booking ID -->
+                    <HBox spacing="8">
+                        <Label text="Booking ID / PNR:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="bookingIdLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Passenger -->
+                    <HBox spacing="8">
+                        <Label text="Passenger:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="passengerLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Flight Number -->
+                    <HBox spacing="8">
+                        <Label text="Flight:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="flightNumberLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Route -->
+                    <HBox spacing="8">
+                        <Label text="Route:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="routeLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Date -->
+                    <HBox spacing="8">
+                        <Label text="Date:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="dateLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Seat -->
+                    <HBox spacing="8">
+                        <Label text="Seat:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="seatLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Class -->
+                    <HBox spacing="8">
+                        <Label text="Class:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="classLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <!-- Amount -->
+                    <HBox spacing="8">
+                        <Label text="Amount Paid:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="amountLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #27ae60;"/>
+                    </HBox>
+
+                    <!-- Payment Method -->
+                    <HBox spacing="8">
+                        <Label text="Payment Method:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label fx:id="paymentMethodLabel" text="-"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <!-- Status -->
+                    <HBox spacing="8">
+                        <Label text="Status:"
+                               style="-fx-font-size: 13px; -fx-text-fill: #888;"
+                               minWidth="160"/>
+                        <Label text="CONFIRMED"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;
+                                      -fx-text-fill: #27ae60;"/>
+                    </HBox>
+
+                </VBox>
+
+                <!-- Action Buttons -->
+                <HBox spacing="16" alignment="CENTER_RIGHT"
+                      style="-fx-padding: 0 0 20 0;">
+                    <Button text="Back to Dashboard"
+                            onAction="#goToDashboard"
+                            style="-fx-background-color: #f0f4f8;
+                                   -fx-text-fill: #333;
+                                   -fx-border-color: #ccc;
+                                   -fx-border-radius: 6;
+                                   -fx-background-radius: 6;
+                                   -fx-font-size: 13px;
+                                   -fx-cursor: hand;
+                                   -fx-padding: 8 16 8 16;"/>
+                    <Button text="View My Bookings"
+                            onAction="#goToMyBookings"
+                            style="-fx-background-color: #1a73e8;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 6;
+                                   -fx-font-size: 13px;
+                                   -fx-cursor: hand;
+                                   -fx-padding: 8 16 8 16;"/>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

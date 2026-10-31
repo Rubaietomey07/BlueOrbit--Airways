@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.airlinemanagementsystem.controllers.PriceDetailsController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f0f4f8;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              style="-fx-background-color: #1a73e8; -fx-padding: 16 24 16 24;">
+            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Price Details"
+                       style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.85);"/>
+            </VBox>
+            <Button text="← Back" onAction="#goBack"
+                    style="-fx-background-color: rgba(255,255,255,0.15);
+                           -fx-text-fill: white;
+                           -fx-border-color: rgba(255,255,255,0.4);
+                           -fx-border-radius: 6;
+                           -fx-background-radius: 6;
+                           -fx-font-size: 13px;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent;
+                           -fx-background: transparent;">
+            <VBox spacing="20" style="-fx-padding: 30;">
+
+                <!-- Booking Summary Card -->
+                <VBox spacing="8"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="Booking Summary"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <Label fx:id="flightNumberLabel" text="-"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #111;"/>
+                    <Label fx:id="routeLabel" text="-"
+                           style="-fx-font-size: 14px; -fx-text-fill: #111;"/>
+                    <Label fx:id="dateLabel" text="-"
+                           style="-fx-font-size: 14px; -fx-text-fill: #111;"/>
+                    <Label fx:id="seatLabel" text="-"
+                           style="-fx-font-size: 14px; -fx-text-fill: #111;"/>
+                    <Label fx:id="classLabel" text="-"
+                           style="-fx-font-size: 14px; -fx-text-fill: #111;"/>
+
+                </VBox>
+
+                <!-- Price Breakdown Card -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="Price Breakdown"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <HBox>
+                        <Label text="Base Price:"
+                               style="-fx-font-size: 14px; -fx-text-fill: #555;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="basePriceLabel" text="BDT 0.00"
+                               style="-fx-font-size: 14px; -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <HBox>
+                        <Label text="Tax (15%):"
+                               style="-fx-font-size: 14px; -fx-text-fill: #555;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="taxLabel" text="BDT 0.00"
+                               style="-fx-font-size: 14px; -fx-text-fill: #111;"/>
+                    </HBox>
+
+                    <HBox>
+                        <Label text="Discount:"
+                               style="-fx-font-size: 14px; -fx-text-fill: #555;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="discountLabel" text="BDT 0.00"
+                               style="-fx-font-size: 14px; -fx-text-fill: #27ae60;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <HBox>
+                        <Label text="Total Payable:"
+                               style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"
+                               HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="totalLabel" text="BDT 0.00"
+                               style="-fx-font-size: 15px; -fx-font-weight: bold;
+                                      -fx-text-fill: #1a73e8;"/>
+                    </HBox>
+
+                </VBox>
+
+                <!-- Discount Option Card -->
+                <VBox spacing="12"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 12;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 12;
+                             -fx-padding: 24;">
+
+                    <Label text="Apply Discount (Optional)"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <VBox spacing="6">
+                        <Label text="Employee ID (Staff: 70% off, Admin: 100% off)"
+                               style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                        <HBox spacing="8">
+                            <TextField fx:id="employeeIdField"
+                                       promptText="Enter Employee ID"
+                                       prefWidth="250"/>
+                            <Button text="Apply" onAction="#applyEmployeeDiscount"
+                                    style="-fx-background-color: #1a73e8;
+                                           -fx-text-fill: white;
+                                           -fx-background-radius: 6;
+                                           -fx-cursor: hand;
+                                           -fx-padding: 6 16 6 16;"/>
+                        </HBox>
+                    </VBox>
+
+                    <Label text="— OR —"
+                           style="-fx-font-size: 13px; -fx-font-weight: bold;
+                                  -fx-text-fill: #888;"/>
+
+                    <VBox spacing="6">
+                        <Label text="Coupon Code"
+                               style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                        <HBox spacing="8">
+                            <TextField fx:id="couponField"
+                                       promptText="Enter Coupon Code"
+                                       prefWidth="250"/>
+                            <Button text="Apply" onAction="#applyCouponDiscount"
+                                    style="-fx-background-color: #1a73e8;
+                                           -fx-text-fill: white;
+                                           -fx-background-radius: 6;
+                                           -fx-cursor: hand;
+                                           -fx-padding: 6 16 6 16;"/>
+                        </HBox>
+                    </VBox>
+
+                    <Label fx:id="discountMessageLabel" text=""
+                           style="-fx-font-size: 13px; -fx-text-fill: #27ae60;"/>
+
+                </VBox>
+
+                <!-- Proceed Button -->
+                <HBox alignment="CENTER_RIGHT" style="-fx-padding: 0 0 20 0;">
+                    <Button text="Proceed to Payment →"
+                            onAction="#handleProceed"
+                            style="-fx-background-color: #1a73e8;
+                                   -fx-text-fill: white;
+                                   -fx-background-radius: 6;
+                                   -fx-font-size: 14px;
+                                   -fx-cursor: hand;
+                                   -fx-padding: 10 20 10 20;"/>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

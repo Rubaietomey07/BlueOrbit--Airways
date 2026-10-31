@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.airlinemanagementsystem.controllers.LoginController"
+           style="-fx-background-color: #1a8fd1;"
+           prefWidth="900" prefHeight="600">
+
+    <!-- Background decorative circles -->
+    <Circle radius="300" fill="#1580be" translateX="350" translateY="-100"/>
+    <Circle radius="200" fill="#1272aa" translateX="400" translateY="50"/>
+    <Ellipse radiusX="120" radiusY="60" fill="#0d5f8f"
+             translateX="-380" translateY="220"/>
+
+    <!-- Main Card -->
+    <HBox style="-fx-background-color: white;
+                 -fx-background-radius: 20;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 8);"
+          prefWidth="780" prefHeight="500"
+          maxWidth="780" maxHeight="500">
+
+        <!-- LEFT: Login Form -->
+        <VBox spacing="16" alignment="TOP_LEFT"
+              style="-fx-padding: 48 50 48 50;
+                     -fx-background-color: white;
+                     -fx-background-radius: 20 0 0 20;"
+              prefWidth="380">
+
+            <!-- Logo -->
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="✈"
+                       style="-fx-font-size: 24px; -fx-text-fill: #1a8fd1;"/>
+                <VBox spacing="0">
+                    <Label text="BLUEORBIT"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold;
+                                  -fx-text-fill: #1a8fd1;"/>
+                    <Label text="AIRWAYS"
+                           style="-fx-font-size: 9px; -fx-text-fill: #888;"/>
+                </VBox>
+            </HBox>
+
+            <Label text="Login"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold;
+                          -fx-text-fill: #222;"/>
+
+            <!-- Role -->
+            <ComboBox fx:id="roleCombo"
+                      promptText="Select your role"
+                      prefWidth="280" prefHeight="42"
+                      style="-fx-background-color: #f5f5f5;
+                             -fx-border-color: #e0e0e0;
+                             -fx-border-radius: 8;
+                             -fx-background-radius: 8;
+                             -fx-font-size: 13px;"/>
+
+            <!-- Username -->
+            <TextField fx:id="usernameField"
+                       promptText="Username"
+                       prefWidth="280" prefHeight="42"
+                       style="-fx-background-color: #f5f5f5;
+                              -fx-border-color: #e0e0e0;
+                              -fx-border-radius: 8;
+                              -fx-background-radius: 8;
+                              -fx-font-size: 13px;
+                              -fx-padding: 0 12 0 12;"/>
+
+            <!-- Password -->
+            <PasswordField fx:id="passwordField"
+                           promptText="Password (min. 6 characters)"
+                           prefWidth="280" prefHeight="42"
+                           style="-fx-background-color: #f5f5f5;
+                                  -fx-border-color: #e0e0e0;
+                                  -fx-border-radius: 8;
+                                  -fx-background-radius: 8;
+                                  -fx-font-size: 13px;
+                                  -fx-padding: 0 12 0 12;"/>
+
+            <!-- Error -->
+            <Label fx:id="errorLabel" text=""
+                   style="-fx-text-fill: #e74c3c; -fx-font-size: 12px;"
+                   wrapText="true" maxWidth="280"/>
+
+            <!-- Login Button -->
+            <Button text="LOGIN" onAction="#handleLogin"
+                    prefWidth="280" prefHeight="42"
+                    style="-fx-background-color: #1a8fd1;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 8;
+                           -fx-font-size: 14px;
+                           -fx-font-weight: bold;
+                           -fx-cursor: hand;"/>
+
+            <!-- Register link -->
+            <HBox spacing="4" alignment="CENTER_LEFT">
+                <Label text="Not registered yet?"
+                       style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+                <Hyperlink text="Create an Account"
+                           onAction="#goToRegister"
+                           style="-fx-font-size: 12px; -fx-text-fill: #1a8fd1;
+                                  -fx-border-color: transparent;"/>
+            </HBox>
+
+        </VBox>
+
+        <!-- RIGHT: Visual Panel -->
+        <StackPane HBox.hgrow="ALWAYS"
+                   style="-fx-background-color: #1a8fd1;
+                          -fx-background-radius: 0 20 20 0;">
+
+            <!-- Decorative circles -->
+            <Circle radius="180" fill="#1580be"
+                    translateX="60" translateY="-40"/>
+            <Circle radius="130" fill="#1272aa"
+                    translateX="80" translateY="20"/>
+
+            <!-- Text content -->
+            <VBox spacing="16" alignment="CENTER"
+                  style="-fx-padding: 40;">
+                <Label text="✈"
+                       style="-fx-font-size: 48px; -fx-text-fill: white;"/>
+                <Label text="BlueOrbit Airways"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold;
+                              -fx-text-fill: white;" wrapText="true"/>
+                <Label text="Start your journey with one click,"
+                       style="-fx-font-size: 14px;
+                              -fx-text-fill: rgba(255,255,255,0.9);"
+                       wrapText="true"/>
+                <Label text="explore the world!"
+                       style="-fx-font-size: 14px;
+                              -fx-text-fill: rgba(255,255,255,0.9);"
+                       wrapText="true"/>
+
+                <!-- Dot indicators -->
+                <HBox spacing="8" alignment="CENTER"
+                      style="-fx-padding: 16 0 0 0;">
+                    <Circle radius="5" fill="white"/>
+                    <Circle radius="5" fill="rgba(255,255,255,0.4)"/>
+                    <Circle radius="5" fill="rgba(255,255,255,0.4)"/>
+                </HBox>
+
+                <!-- Feature points -->
+                <VBox spacing="8" style="-fx-padding: 16 0 0 0;">
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="Book flights instantly"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="Multiple seat classes"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="✓"
+                               style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                        <Label text="Exclusive member discounts"
+                               style="-fx-text-fill: rgba(255,255,255,0.9);
+                                      -fx-font-size: 13px;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+        </StackPane>
+
+    </HBox>
+
+</StackPane>
